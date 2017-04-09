@@ -5,11 +5,13 @@ import com.google.common.hash.Hashing;
 import java.nio.charset.Charset;
 
 public class MurmurHashComponent {
-
     private HashFunction murmurHf;
 
-    public int getHashAsInt(String inputString){
+    public MurmurHashComponent(){
         this.murmurHf = Hashing.murmur3_128();
+    }
+
+    public int getHashAsInt(String inputString){
         com.google.common.hash.HashCode hc = this.murmurHf.newHasher().putString(inputString, Charset.defaultCharset()).hash();
         return  hc.asInt();
     }

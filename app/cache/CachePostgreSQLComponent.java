@@ -6,6 +6,7 @@ import play.libs.F.Promise;
 import models.CacheData;
 import play.db.ebean.Transactional;
 import javax.inject.Inject;
+import javax.persistence.OptimisticLockException;
 
 
 public class CachePostgreSQLComponent implements BaseCacheComponent {
@@ -35,7 +36,12 @@ public class CachePostgreSQLComponent implements BaseCacheComponent {
         return Promise.promise(() -> {
             cacheDB.access_token = hash.getHashAsInt(access_token);
             cacheDB.responseBody = response.getBody();
-            cacheDB.save();
+            try{
+                cacheDB.save();
+            }
+            catch (OptimisticLockException saveException){
+                return saveException;
+            };
             return null;
         });
     }

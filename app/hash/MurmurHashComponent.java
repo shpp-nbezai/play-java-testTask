@@ -2,6 +2,7 @@ package hash;
 
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
+import com.google.common.hash.HashCode;
 import java.nio.charset.Charset;
 
 public class MurmurHashComponent {
@@ -12,8 +13,9 @@ public class MurmurHashComponent {
     }
 
     public int getHashAsInt(String inputString){
-        com.google.common.hash.HashCode hc = this.murmurHf.newHasher().putString(inputString, Charset.defaultCharset()).hash();
+        HashCode hc = this.murmurHf.newHasher().putString(inputString, Charset.defaultCharset()).hash();
         return  hc.asInt();
     }
 
 }
+

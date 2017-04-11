@@ -11,23 +11,17 @@ public class CacheComponentOnMap implements BaseCacheComponent {
     private final Map<String, CustomResponse> cacheResponseMap = new ConcurrentHashMap<String,CustomResponse>();
 
     public Promise<String> getResponseBody(String access_token){
-
-        return Promise.promise(()->{
-            if (cacheResponseMap.containsKey(access_token)) {
-                CustomResponse response = cacheResponseMap.get(access_token);
-                return response.getBody();
-            }
-            String emptyCache = null;
-            return emptyCache;
-        });
+        if (cacheResponseMap.containsKey(access_token)) {
+            CustomResponse response = cacheResponseMap.get(access_token);
+            String responseBody = response.getBody();
+            return Promise.<String>pure(responseBody);
+        }
+        return Promise.<String>pure(null);
     }
 
     public F.Promise<Throwable> putResponse(String access_token, CustomResponse response)throws Throwable{
-
-        return Promise.promise(() -> {
-            cacheResponseMap.put(access_token, response);
-            return null;
-        });
+        cacheResponseMap.put(access_token, response);
+        return Promise.<Throwable>pure(null);
     }
 
 }

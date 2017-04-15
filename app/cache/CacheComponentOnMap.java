@@ -9,6 +9,7 @@ import javax.inject.*;
 
 @Singleton
 public class CacheComponentOnMap implements BaseCacheComponent {
+
     private final Map<String, CustomResponse> cacheResponseMap = new ConcurrentHashMap<String,CustomResponse>();
 
     public Promise<String> getResponseBody(String access_token){
@@ -24,5 +25,4 @@ public class CacheComponentOnMap implements BaseCacheComponent {
         cacheResponseMap.put(access_token, response);
         return Promise.<Throwable>pure(null);
     }
-
 }

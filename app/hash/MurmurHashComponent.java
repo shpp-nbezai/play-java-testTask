@@ -8,6 +8,7 @@ import javax.inject.*;
 
 @Singleton
 public class MurmurHashComponent {
+
     private HashFunction murmurHf;
 
     public MurmurHashComponent(){
@@ -15,8 +16,8 @@ public class MurmurHashComponent {
     }
 
     public int getHashAsInt(String inputString){
-        HashCode hc = this.murmurHf.newHasher().putString(inputString, Charset.defaultCharset()).hash();
-        return  hc.asInt();
+        HashCode hashCode = this.murmurHf.newHasher().putString(inputString, Charset.defaultCharset()).hash();
+        return  hashCode.asInt();
     }
 }
 

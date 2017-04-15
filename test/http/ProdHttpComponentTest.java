@@ -137,5 +137,4 @@ public class ProdHttpComponentTest {
         verify(mockWsRequest, never()).get();
 
     }
-
 }

@@ -17,8 +17,7 @@ public class CachePostgreSQLComponent implements BaseCacheComponent {
     public Promise<String> getResponseBody(String access_token) throws Throwable {
         MurmurHashComponent hash = new MurmurHashComponent();
         cacheDB = new CacheData();
-        if (access_token == null ) throw new NullPointerException("Access_token = null!");
-
+        if (access_token == null ) throw new NullPointerException("AccessToken = null!");
         return Promise.promise(() -> {
             CacheData dbResponseBody = cacheDB.find.byId(hash.getHashAsInt(access_token));
             if (dbResponseBody == null){
@@ -31,7 +30,6 @@ public class CachePostgreSQLComponent implements BaseCacheComponent {
     @Override
     @Transactional
     public Promise<Throwable> putResponse(String access_token, CustomResponse response) throws Throwable {
-
         return Promise.promise(() -> {
             MurmurHashComponent hash = new MurmurHashComponent();
             cacheDB = new CacheData();
@@ -46,5 +44,4 @@ public class CachePostgreSQLComponent implements BaseCacheComponent {
             return null;
         });
     }
-
 }

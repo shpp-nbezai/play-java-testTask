@@ -3,6 +3,7 @@ import javax.inject.*;
 
 @Singleton
 public class InternalServerErrorException extends Throwable {
+
     public InternalServerErrorException() {
     }
 

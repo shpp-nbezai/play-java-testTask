@@ -15,7 +15,6 @@ public class JsonComponent {
         error.put("code", "0");
         error.put("fbtrace_id", "");
         jsonResult.set("error", error);
-
         return  jsonResult;
     }
 }

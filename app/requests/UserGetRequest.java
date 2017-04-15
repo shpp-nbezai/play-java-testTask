@@ -6,8 +6,6 @@ import javax.inject.*;
 @Singleton
 public class UserGetRequest {
 
-    private final int ACCESS_TOKEN_CUR_LENGTH = 10;
-
     @Constraints.Required
     @Constraints.MinLength(10)
     protected String access_token;

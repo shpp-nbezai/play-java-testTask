@@ -11,13 +11,11 @@ import javax.persistence.OptimisticLockException;
 @Singleton
 public class CachePostgreSQLComponent implements BaseCacheComponent {
 
-    @Inject
-    MurmurHashComponent hash;
-
     private final  CacheData cacheDB = new CacheData();
 
     @Override
     public Promise<String> getResponseBody(String access_token) throws Throwable {
+        MurmurHashComponent hash = new MurmurHashComponent();
         if (access_token == null ) throw new NullPointerException("Access_token = null!");
 
         return Promise.promise(() -> {
@@ -34,6 +32,7 @@ public class CachePostgreSQLComponent implements BaseCacheComponent {
     public Promise<Throwable> putResponse(String access_token, CustomResponse response) throws Throwable {
 
         return Promise.promise(() -> {
+            MurmurHashComponent hash = new MurmurHashComponent();
             cacheDB.access_token = hash.getHashAsInt(access_token);
             cacheDB.responseBody = response.getBody();
             try{

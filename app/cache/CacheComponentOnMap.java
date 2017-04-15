@@ -5,8 +5,9 @@ import play.libs.F.Promise;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import response.CustomResponse;
+import javax.inject.*;
 
-
+@Singleton
 public class CacheComponentOnMap implements BaseCacheComponent {
     private final Map<String, CustomResponse> cacheResponseMap = new ConcurrentHashMap<String,CustomResponse>();
 

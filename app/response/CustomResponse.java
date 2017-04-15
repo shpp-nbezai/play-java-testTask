@@ -1,8 +1,9 @@
 package response;
 
 import play.libs.ws.*;
+import javax.inject.*;
 
-
+@Singleton
 public class CustomResponse {
 
     private int responseCode;

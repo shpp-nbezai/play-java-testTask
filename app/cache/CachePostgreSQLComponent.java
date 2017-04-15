@@ -5,10 +5,10 @@ import response.CustomResponse;
 import play.libs.F.Promise;
 import models.CacheData;
 import play.db.ebean.Transactional;
-import javax.inject.Inject;
+import javax.inject.*;
 import javax.persistence.OptimisticLockException;
 
-
+@Singleton
 public class CachePostgreSQLComponent implements BaseCacheComponent {
 
     @Inject

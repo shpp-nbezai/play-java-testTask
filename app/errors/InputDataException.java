@@ -1,5 +1,7 @@
 package errors;
+import javax.inject.*;
 
+@Singleton
 public class InputDataException extends Throwable{
 
     public InputDataException() {
@@ -8,7 +10,4 @@ public class InputDataException extends Throwable{
     public InputDataException(String message) {
         super("Incorrect input data Exception: " + message);
     }
-
-
-
 }

@@ -1,8 +1,9 @@
 package requests;
 
 import play.data.validation.Constraints;
+import javax.inject.*;
 
-
+@Singleton
 public class UserGetRequest {
 
     private final int ACCESS_TOKEN_CUR_LENGTH = 10;
@@ -18,5 +19,4 @@ public class UserGetRequest {
     public void setAccess_token(String access_token) {
         this.access_token = access_token;
     }
-
 }

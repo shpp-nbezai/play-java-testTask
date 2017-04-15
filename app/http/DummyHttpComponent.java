@@ -3,7 +3,9 @@ package http;
 import requests.UserGetRequest;
 import play.libs.F.RedeemablePromise;
 import play.libs.F.Promise;
+import javax.inject.*;
 
+@Singleton
 public class DummyHttpComponent implements BaseHttpComponent {
 
     private final String MOCK =  "{\n" +

@@ -4,7 +4,9 @@ import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
 import com.google.common.hash.HashCode;
 import java.nio.charset.Charset;
+import javax.inject.*;
 
+@Singleton
 public class MurmurHashComponent {
     private HashFunction murmurHf;
 
@@ -16,6 +18,5 @@ public class MurmurHashComponent {
         HashCode hc = this.murmurHf.newHasher().putString(inputString, Charset.defaultCharset()).hash();
         return  hc.asInt();
     }
-
 }
 

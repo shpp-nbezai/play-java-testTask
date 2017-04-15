@@ -2,7 +2,9 @@ package json;
 
 import play.libs.Json;
 import com.fasterxml.jackson.databind.node.*;
+import javax.inject.*;
 
+@Singleton
 public class JsonComponent {
 
     public ObjectNode getFBServerErrorJson(Throwable throwable){

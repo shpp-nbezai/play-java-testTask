@@ -1,6 +1,5 @@
 package http;
 
-import javax.inject.Inject;
 import cache.BaseCacheComponent;
 import errors.InternalServerErrorException;
 import requests.UserGetRequest;
@@ -10,8 +9,9 @@ import play.libs.F.Promise;
 import play.libs.F.Function;
 import errors.BadRequestException;
 import errors.InputDataException;
+import javax.inject.*;
 
-
+@Singleton
 public class ProdHttpComponent implements BaseHttpComponent {
     private final WSClient ws;
     private final BaseCacheComponent cacheComponent;
